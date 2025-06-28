@@ -26,8 +26,11 @@ Criar um banco de dados funcional e bem estruturado para simular o funcionamento
 
 ```📦 nome-do-projeto/
 ├── README.md
-└── scripts/
-├── 01_create_tables.sql # Criação das tabelas
+├── # Modelo MER #
+├── scripts/
+│  ├──01_criacao_tabela     #Criação das tabelas
+│  ├── 02_importando_dados  #Inserção de dados fictícios
+└──└── 03_consultas.sql     #Consultas e análises
 ```
 
 ## 🔧 Requisitos
@@ -47,7 +50,7 @@ Para executar o projeto, você vai precisar de:
    ```bash
    git clone https://github.com/seu-usuario/nome-do-projeto.git
    cd nome-do-projeto
-    ```
+   ```
 2. **Abra seu gerenciador de banco de dados (ex: MySQL Workbench)**
 
 3. **Crie um novo banco de dados:**
@@ -58,9 +61,36 @@ Para executar o projeto, você vai precisar de:
 
 4. **Execute os scripts SQL na seguinte ordem:**
 
-    -  01_create_tables.sql → Criação das tabelas
+    -  **01_criacao_tabela** → Criação das tabelas
 
-    - 02_insert_data.sql → Inserção de dados fictícios
+    - **02_importando_dados** → Inserção de dados fictícios
 
-    - 03_queries.sql → Consultas e análises
+    - **03_consultas.sql** → Consultas e análises
+
+
+## 🧩 Problemas Encontrados
+
+### 🎯 Garantindo a Coerência entre Marcas e Modelos de Veículos
+
+Durante o desenvolvimento do sistema, enfrentei um problema clássico de modelagem de banco de dados: a coluna de modelo de carro estava inicialmente presente na tabela `Veiculos` como um simples `VARCHAR`.
+
+Isso permitia combinações inválidas, como associar o modelo **"Ka"** à marca **"Nissan"**, o que quebra a lógica do domínio.
+
+---
+
+#### 🚫 O Problema
+
+- A tabela `Veiculos` aceitava qualquer modelo digitado.
+- Não havia validação sobre qual marca aquele modelo pertencia.
+- Isso comprometia a **integridade dos dados** e a confiabilidade da aplicação.
+
+---
+
+#### ✅ A Solução
+
+- Normalizei a estrutura do banco criando a tabela `Modelos`.
+- Essa nova tabela passou a conter:
+  - Um **ID** único para cada modelo.
+  - O **nome** do modelo.
+  - Uma **chave estrangeira** (`ID_Marca`) referenciando a marca correta na tabela `Marcas`.
 

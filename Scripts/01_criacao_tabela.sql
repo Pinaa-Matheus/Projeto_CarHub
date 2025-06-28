@@ -1,3 +1,5 @@
+-- ⚠️ Atenção: Execute um script por vez e na ordem correta para evitar erros de relacionamento entre as tabelas.
+
 -------- Criando tabelas --------
 CREATE TABLE Marcas (
     ID_Marca INT PRIMARY KEY AUTO_INCREMENT,
