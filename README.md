@@ -26,7 +26,7 @@ Criar um banco de dados funcional e bem estruturado para simular o funcionamento
 
 ```📦 nome-do-projeto/
 ├── README.md
-├── # Modelo MER #
+├── ModeloMER.png
 ├── scripts/
 │  ├──01_criacao_tabela     #Criação das tabelas
 │  ├── 02_importando_dados  #Inserção de dados fictícios
